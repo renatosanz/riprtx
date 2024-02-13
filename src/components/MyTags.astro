@@ -1,0 +1,45 @@
+---
+import { tags } from "../blogContent/tableContent.js";
+---
+
+<footer>
+  <ul>
+    <li><a href="/">Home</a></li>
+    {tags.map((e) => <li>{e}</li>)}
+  </ul>
+  <div>
+    <span> © Renato Sanchez L. · Developer · 2023 </span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    font-family: "Inter", "Courier New", Courier, monospace;
+    flex-direction: column;
+    display: flex;
+    gap: 0.5em;
+    margin: 1em 0.5em;
+    margin: auto;
+    width: 50em;
+    padding-bottom: 20em;
+  }
+  div {
+    margin: auto 0 auto auto;
+  }
+  ul {
+    display: flex;
+    margin: auto 0 auto auto;
+    text-decoration: none;
+    list-style: none;
+    gap: 0.5em;
+  }
+  li {
+    background: var(--select-bg-color);
+    padding: 0.5em;
+  }
+  li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+

@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { blogContent } from "../blogContent/tableContent.js";
+---
+
+<Layout title="rip.rtx">
+  <ul>
+    {
+      blogContent.map((element) => (
+        <a href={"./blogs/blog" + element.src + "/content"}>
+          <li>
+            <div>{element.title}</div>
+            <div>{element.date}</div>
+          </li>
+        </a>
+      ))
+    }
+  </ul>
+</Layout>
+
+<style>
+  ul {
+    margin: 1em 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  li {
+    cursor: pointer;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    text-wrap: balance;
+    font-family: "Inter", "Courier New", Courier, monospace;
+    padding: 0.75rem;
+    gap: 0.5em;
+    transition: 0.1s;
+    border-bottom: 3px solid var(--select-bg-color);
+  }
+  li:hover {
+    background: var(--select-bg-color);
+    padding-left: 25px;
+    text-decoration: underline;
+  }
+  @media screen and ((max-width: 800px)) {
+    li {
+      padding: 0.5em;
+    }
+    li:hover {
+      background: var(--select-bg-color);
+      padding-left: 0.5em;
+      text-decoration: underline;
+    }
+  }
+</style>

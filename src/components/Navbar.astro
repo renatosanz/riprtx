@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<nav>
+  <div>
+    <h1>{title}</h1>
+    <ul class="social-links">
+      <a href="/about" class="social-links__entry">
+        <i class="fa fa-user"></i>
+      </a>
+      <a
+        href="https://github.com/renatosanz"
+        class="social-links__entry"
+        target="_blank"
+      >
+        <i class="fa fa-github"></i>
+      </a>
+      <a
+        href="https://twitter.com/Renatox75732128"
+        class="social-links__entry"
+        target="_blank"
+      >
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a
+        href="https://www.behance.net/renorenato"
+        class="social-links__entry"
+        target="_blank"
+      >
+        <i class="fab fa-behance"></i>
+      </a>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid var(--font-color);
+  }
+  h1 {
+    margin: auto 0;
+    color: var(--primary-color);
+    font-size: 3rem;
+    font-family: "Inter", "Courier New", Courier, monospace;
+  }
+  a {
+    font-size: 25px;
+  }
+  div {
+    padding: 1rem 0;
+    width: 100%;
+    justify-content: space-between;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  @media screen and (max-width: 800px;) {
+    div {
+      flex-wrap: wrap;
+    }
+  }
+</style>
