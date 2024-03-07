@@ -36,6 +36,9 @@ import Navbar from "../components/Navbar.astro";
 </html>
 
 <style is:global>
+  .info_blog * {
+    display: grid;
+  }
   @supports (font-variation-settings: normal) {
     :root {
       font-family: InterVariable, sans-serif;
@@ -49,10 +52,10 @@ import Navbar from "../components/Navbar.astro";
     font-feature-settings:
       "liga" 1,
       "calt" 1; /* fix for Chrome */
-      --font-color: #000;
-      --primary-color: #4e4e4e;
-      --select-bg-color: #e7e7e7;
-      --bg-color: #fff;
+    --font-color: #000;
+    --primary-color: #4e4e4e;
+    --select-bg-color: #e7e7e7;
+    --bg-color: #fff;
   }
   html {
     font-family: "Inter";
@@ -87,10 +90,10 @@ import Navbar from "../components/Navbar.astro";
     padding-top: 6rem;
     width: 50em;
   }
-  .info_blog{
+  .info_blog {
     display: flex;
     flex-direction: column;
-  } 
+  }
   ul {
     list-style: decimal;
   }
