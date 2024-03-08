@@ -21,8 +21,10 @@ import Navbar from "../components/Navbar.astro";
       <Navbar title="rip.rtx" />
       <div class="info_blog">
         <h1 class="title_blog">{Astro.props.frontmatter.title}</h1>
-        <p class="date_blog">{Astro.props.frontmatter.date}</p>
-        <p class="author_blog">{Astro.props.frontmatter.author}</p>
+        <div>
+          <p class="author_blog">by {Astro.props.frontmatter.author}</p>
+          <p class="date_blog">{Astro.props.frontmatter.date}</p>
+        </div>
       </div>
       <section>
         <slot />
@@ -36,9 +38,6 @@ import Navbar from "../components/Navbar.astro";
 </html>
 
 <style is:global>
-  .info_blog * {
-    display: grid;
-  }
   @supports (font-variation-settings: normal) {
     :root {
       font-family: InterVariable, sans-serif;
@@ -91,8 +90,17 @@ import Navbar from "../components/Navbar.astro";
     width: 50em;
   }
   .info_blog {
+    display: grid;
+  }
+  .info_blog h1 {
+    margin-bottom: 0;
+  }
+  .info_blog div {
     display: flex;
-    flex-direction: column;
+  }
+
+  .date_blog {
+    font-style: italic;
   }
   ul {
     list-style: decimal;
