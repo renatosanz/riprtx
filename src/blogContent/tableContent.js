@@ -24,6 +24,11 @@ export let blogContent = [
     date: "Febrery 2024",
     src: "5",
   },
+  {
+    title: "Art with turtles (Python)",
+    date: "May 2024",
+    src: "6",
+  },
 ]
 export let tags = ["Art", "Algorithm"]
 export let MyLinks = [{}, {}, {}]
