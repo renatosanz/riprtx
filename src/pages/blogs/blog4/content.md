@@ -81,7 +81,9 @@ In the code snippet provided, we've merely scratched the surface of this captiva
 
 So, let us embrace the magic of code and continue our exploration, for within its syntax lies a canvas awaiting the brushstrokes of our creativity.
 
-Visit my project [here](https://editor.p5js.org/renatosanz/full/_byTcii1f)
+Result: 
+
+<iframe src="https://editor.p5js.org/renatosanz/full/_byTcii1f"  width=550  height=550></iframe>
 
 ## Code in p5.js
 ```javascript

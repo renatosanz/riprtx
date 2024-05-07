@@ -56,7 +56,8 @@ To practice Bezier curve generation, I created a prototype animation engine. The
 
    Result:
 
-![Curves Animation](./curves1.gif)
+<iframe src="https://editor.p5js.org/renatosanz/full/ERpfUSk9N" height=350 width=350></iframe>
+
 
 This initial experiment allows me to extend my projects by creating more intriguing curves.
 

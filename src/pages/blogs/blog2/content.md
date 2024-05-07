@@ -205,3 +205,6 @@ Feel free to explore and modify this code to create your own mesmerizing algorit
 # EXAMPLES
 
 Please check **[this](https://drive.google.com/drive/folders/1g-Hoambx4gkxJVzEmgsa57BcnVqjIujm?usp=drive_link)**, there's a lot of beautiful examples.
+
+Or generate your own flowers, have fun!
+<iframe src="https://editor.p5js.org/renatosanz/full/BtH7JzXHV" height=400 width=330></iframe> 
