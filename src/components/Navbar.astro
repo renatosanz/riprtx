@@ -44,7 +44,7 @@ const { title } = Astro.props;
     border-bottom: 1px solid var(--font-color);
   }
   h1 {
-    margin: auto 0;
+    margin: 0.5rem 0;
     color: var(--primary-color);
     font-size: 3rem;
     font-family: "Inter", "Courier New", Courier, monospace;
@@ -53,13 +53,16 @@ const { title } = Astro.props;
     font-size: 25px;
   }
   div {
-    padding: 1rem 0;
+    padding: 0 0;
     width: 100%;
     justify-content: space-between;
     margin: auto;
     display: flex;
     flex-direction: row;
     padding: 0 10px;
+  }
+  .social-links{
+    margin: auto 0 1rem;
   }
   @media screen and (max-width: 800px;) {
     div {
