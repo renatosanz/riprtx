@@ -1,18 +1,18 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../layouts/BlogLayout.astro
 title: "Flowers - p5.js"
 author: "Renato Sanchez"
 date: "December 2023"
 ---
 I recently stumbled upon the captivating work of [Atul Vinayak](https://a.tulv.in/), a programmer who maintained a blog from 2012 to 2022. A few months ago, I delved into one of his fascinating topics: **Algorithmic Art**. Today, I'm excited to share my journey of success in generating exquisite flowers using [p5.js](https://p5js.org/).
 
-![Generated Flowers](./img2.png)
+![Generated Flowers](./blog2/img2.png)
 
 ## Understanding Symmetric Patterns
 
 Before we dive into the code, let's grasp the concept of symmetric patterns. These patterns consist of lines and curves radiating from a center, forming a symmetrical design based on a rotation angle.
 
-![Symmetric Pattern Diagram](./diag1.png)
+![Symmetric Pattern Diagram](./blog2/diag1.png)
 
 To introduce an element of randomness, I experimented with parameters such as the number of lines per area, the rotation angle (n-times), and a variable called "curves" to add intricacy to the patterns.
 

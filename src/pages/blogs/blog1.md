@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../layouts/BlogLayout.astro
 title: "Thinking about Processing"
 author: "Renato Sanchez"
 date: "December 2023"

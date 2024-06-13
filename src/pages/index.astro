@@ -1,16 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { blogContent } from "../blogContent/tableContent.js";
+
+const allPosts = await Astro.glob("./blogs/*.md")
 ---
 
 <Layout title="rip.rtx">
   <ul>
     {
-      blogContent.map((element) => (
-        <a href={"./blogs/blog" + element.src + "/content"}>
+      allPosts.map((post) => (
+        <a href={post.url}>
           <li>
-            <div>{element.title}</div>
-            <div>{element.date}</div>
+            <div>{post.frontmatter.title}</div>
+            <div>{post.frontmatter.date}</div>
           </li>
         </a>
       ))

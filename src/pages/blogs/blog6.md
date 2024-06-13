@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../layouts/BlogLayout.astro
 title: "Art with Turtles (Python)"
 author: "Renato Sanchez"
 date: "May 2024"
@@ -17,10 +17,10 @@ This model is inspired by Conway's well-known _Game of Life_, where a cell inter
 
 This way, we obtain a trace map over which our cells advance.
 
-![pattern1](./img1.png)
+![pattern1](./blog6/img1.png)
 
-![pattern2](./ejec2.gif)
-![pattern3](./results.png)
+![pattern2](./blog6/ejec2.gif)
+![pattern3](./blog6/results.png)
 
 Check the full project [here](https://drive.google.com/drive/folders/16pLMSz0uKvdQawVmk2J9s9fLw40J0POX?usp=sharing).
 

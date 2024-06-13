@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../layouts/BlogLayout.astro
 title: "Project Bézier - Part 2"
 author: "Renato Sanchez"
 date: "December 2023"

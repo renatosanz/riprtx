@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../layouts/BlogLayout.astro
 title: "Exploring Bezier Curves in p5.js"
 author: "Renato Sanchez"
 date: "December 2023"

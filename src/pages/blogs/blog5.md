@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../layouts/BlogLayout.astro
 title: "Origami: Folding solutions"
 author: "Renato Sanchez"
 date: "Febrery 2024"
