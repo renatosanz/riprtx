@@ -21,18 +21,24 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+function onlyDateForm(date:number){
+  var newDate = new Date(date)
+  return newDate.toDateString()
+}
+
 ---
 
 <Layout title={tag}>
   <ul>
     {
       posts.map((post)=>
-          <li>
             <a href={post.url}>
+          <li>
             <div>{post.frontmatter.title}</div>
-            <div>{post.frontmatter.date}</div>
-          </a>
+            <div>{onlyDateForm(post.frontmatter.date)}</div>
           </li>
+          </a>
         )
     }
   </ul>
