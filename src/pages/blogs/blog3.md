@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: "Exploring Bezier Curves in p5.js"
 author: "Renato Sanchez"
 date: 2023-12-07
-tags: ["Idea","Processing"]
+tags: ["Algorithms","Processing"]
 ---
 
 Curves are ubiquitous in real-world scenarios, from everyday life to digital landscapes. But have you ever wondered about the mechanics behind curve generation?

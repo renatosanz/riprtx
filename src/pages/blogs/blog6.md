@@ -3,7 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: "Art with Turtles (Python)"
 author: "Renato Sanchez"
 date: 2024-05-1
-tags: ["Idea","Processing"]
+tags: ["Python","Art"]
 ---
 
 Lately, I've been casually playing Minesweeper, crosswords, and Sudoku to avoid spending too much time on social media, which often leaves us with little to show for our day. During one of these moments while playing Minesweeper, I noticed that the patterns formed during the game are quite interesting. So, I decided to design an algorithmic model that could create something similar but with my own twist.

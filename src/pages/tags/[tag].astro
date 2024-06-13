@@ -36,7 +36,7 @@ function onlyDateForm(date:number){
             <a href={post.url}>
           <li>
             <div>{post.frontmatter.title}</div>
-            <div>{onlyDateForm(post.frontmatter.date)}</div>
+            {post.frontmatter.tags.includes("In Progress") ? <div>In Progress</div> : <div>{onlyDateForm(post.frontmatter.date)}</div>}
           </li>
           </a>
         )

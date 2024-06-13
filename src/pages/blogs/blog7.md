@@ -2,7 +2,7 @@
 layout: ../../layouts/BlogLayout.astro
 title: "Origami: Folding solutions"
 author: "Renato Sanchez"
-tags: ["Idea","Processing"]
+tags: ["Origami","Article","In Progress"]
 date: 2024-12-23
 ---
 Si bien el estado del arte del origami es bastante amplio, esta vez nos centraremos en 2 sectores: arte y ciencia.
