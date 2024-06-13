@@ -2,7 +2,7 @@
 layout: ../../layouts/BlogLayout.astro
 title: "Thinking about Processing"
 author: "Renato Sanchez"
-date: "December 2023"
+date: 2023-09-12
 ---
 In the realm of computer science, I've encountered countless individuals who misunderstand the true potential of technology. Often bombarded with requests to fix printers or hack social media profiles, I realized a disconnect exists between the public's perception and the transformative power of technology.
 

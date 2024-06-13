@@ -1,6 +1,12 @@
 ---
 import MyTags from "../components/MyTags.astro";
 import Navbar from "../components/Navbar.astro";
+
+function onlyDateForm(date:number){
+  var newDate = new Date(date)
+  return newDate.toDateString()
+}
+
 ---
 
 <!doctype html>
@@ -24,7 +30,7 @@ import Navbar from "../components/Navbar.astro";
         <h1 class="title_blog">{Astro.props.frontmatter.title}</h1>
         <div>
           <p class="author_blog">by {Astro.props.frontmatter.author}</p>
-          <p class="date_blog">{Astro.props.frontmatter.date}</p>
+          <p class="date_blog">{onlyDateForm(Astro.props.frontmatter.date)}</p>
         </div>
       </div>
       <section>

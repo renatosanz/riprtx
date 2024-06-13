@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { blogContent } from "../blogContent/tableContent.js";
 
 const allPosts = await Astro.glob("./blogs/*.md")
+
+function onlyDateForm(date:number){
+  var newDate = new Date(date)
+  return newDate.toDateString()
+}
 ---
 
 <Layout title="rip.rtx">
@@ -12,7 +16,7 @@ const allPosts = await Astro.glob("./blogs/*.md")
         <a href={post.url}>
           <li>
             <div>{post.frontmatter.title}</div>
-            <div>{post.frontmatter.date}</div>
+            <div>{onlyDateForm(post.frontmatter.date)}</div>
           </li>
         </a>
       ))
