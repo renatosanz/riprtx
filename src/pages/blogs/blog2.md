@@ -2,6 +2,7 @@
 layout: ../../layouts/BlogLayout.astro
 title: "Flowers - p5.js"
 author: "Renato Sanchez"
+tags: ["Idea","Processing"]
 date: 2023-11-23
 ---
 I recently stumbled upon the captivating work of [Atul Vinayak](https://a.tulv.in/), a programmer who maintained a blog from 2012 to 2022. A few months ago, I delved into one of his fascinating topics: **Algorithmic Art**. Today, I'm excited to share my journey of success in generating exquisite flowers using [p5.js](https://p5js.org/).

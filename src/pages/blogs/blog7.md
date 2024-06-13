@@ -2,7 +2,8 @@
 layout: ../../layouts/BlogLayout.astro
 title: "Origami: Folding solutions"
 author: "Renato Sanchez"
-date: 2024-02-29
+tags: ["Idea","Processing"]
+date: 2024-12-23
 ---
 Si bien el estado del arte del origami es bastante amplio, esta vez nos centraremos en 2 sectores: arte y ciencia.
 Desde hace miles de años, el origami se inicio en China, pero tambien se practicaba en partes de Japón y Corea. Los primeros registros del origami datan del siglo VI d.C. en la decoracion de kimonos y demás objetos. 

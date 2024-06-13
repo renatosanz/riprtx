@@ -3,6 +3,7 @@ layout: ../../layouts/BlogLayout.astro
 title: "Project Bézier - Part 2"
 author: "Renato Sanchez"
 date: 2024-02-20
+tags: ["Idea","Processing"]
 ---
 
 In the realm of creative coding, where mathematics meets imagination, lies an enchanting world of interactive art. In this blog, we delve into a mesmerizing piece of code that breathes life into geometric forms, dancing across the canvas with the grace of algorithms and the whimsy of human input.

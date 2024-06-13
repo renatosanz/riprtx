@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob("../blogs/*.md");
+
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.frontmatter.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={tag}>
+  <ul>
+    {
+      posts.map((post)=>
+          <li>
+            <a href={post.url}>
+            <div>{post.frontmatter.title}</div>
+            <div>{post.frontmatter.date}</div>
+          </a>
+          </li>
+        )
+    }
+  </ul>
+</Layout>
+
+
+
+<style>
+  ul {
+    margin: 1em 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  li {
+    cursor: pointer;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    text-wrap: balance;
+    font-family: "Inter", "Courier New", Courier, monospace;
+    padding: 0.75rem;
+    gap: 0.5em;
+    transition: 0.1s;
+    border-bottom: 3px solid var(--select-bg-color);
+  }
+  li:hover {
+    background: var(--select-bg-color);
+    padding-left: 25px;
+    text-decoration: underline;
+  }
+  @media screen and ((max-width: 800px)) {
+    li {
+      padding: 0.5em;
+    }
+    li:hover {
+      background: var(--select-bg-color);
+      padding-left: 0.5em;
+      text-decoration: underline;
+    }
+  }
+</style>
