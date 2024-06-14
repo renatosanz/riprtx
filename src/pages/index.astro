@@ -1,12 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const allPosts = await Astro.glob("./blogs/*.md")
+function orderByDate(d1,d2) {
+  let n1= new Date(d1.frontmatter.date).getTime();
+  let n2= new Date(d2.frontmatter.date).getTime();
+    if (n1> n2) {
+        return 1;
+    }
+    if (n1< n2) {
+        return -1;
+    }
+    return 0;
+}
+
+let allPosts= await Astro.glob("./blogs/*.md")
+allPosts = allPosts.sort(orderByDate)
 
 function onlyDateForm(date:number){
   var newDate = new Date(date)
   return newDate.toDateString()
 }
+
 ---
 
 <Layout title="rip.rtx">
