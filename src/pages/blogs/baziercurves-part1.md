@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: "Exploring Bezier Curves in p5.js"
+title: "Bezier Curves - Part 1"
 author: "Renato Sanchez"
 date: 2023-12-07
 tags: ["Algorithms","Processing"]

@@ -46,16 +46,10 @@ const {title,date,tags} = frontmatter
 </html>
 
 <style is:global>
-  @supports (font-variation-settings: normal) {
-    :root {
-      font-family: InterVariable, sans-serif;
-    }
-  }
   ::-webkit-scrollbar {
     display: none;
   }
   :root {
-    font-family: Inter, sans-serif;
     font-feature-settings:
       "liga" 1,
       "calt" 1; /* fix for Chrome */
@@ -65,14 +59,15 @@ const {title,date,tags} = frontmatter
     --bg-color: #fff;
   }
   html {
-    font-family: "Inter";
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
     background: var(--bg-color);
     color: var(--font-color);
   }
   code {
     user-select: text;
     font-family:
-      "Fira Code",
+      'Courier New',
       Menlo,
       Monaco,
       Lucida Console,
@@ -85,8 +80,8 @@ const {title,date,tags} = frontmatter
   pre {
     white-space: nowrap;
     overflow-x: scroll;
-    padding: 1em;
-    border-radius: 1em;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
   }
   body {
     display: flex;
@@ -95,7 +90,7 @@ const {title,date,tags} = frontmatter
   #main-section {
     margin: auto;
     padding-top: 6rem;
-    width: 50em;
+    max-width: 600px;
   }
   .info_blog {
     display: flex;
@@ -103,6 +98,7 @@ const {title,date,tags} = frontmatter
   }
   .info_blog h1 {
     margin-bottom: 0;
+    font-family: InterVariable,Arial, Helvetica, sans-serif;
   }
   .info_blog div {
     display: flex;
@@ -135,7 +131,7 @@ const {title,date,tags} = frontmatter
   a {
     text-decoration: none;
     word-wrap: break-word;
-    color: var(--primary-color);
+    color: #00aeff;
   }
   section {
     margin: auto;
@@ -153,6 +149,15 @@ const {title,date,tags} = frontmatter
     text-wrap: pretty;
     word-wrap: break-word;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6{
+    font-family: InterVariable,Arial, Helvetica, sans-serif;
+    
+  }
   h1 {
     font-size: 2rem;
   }
@@ -169,7 +174,7 @@ const {title,date,tags} = frontmatter
     padding:0 2rem;
   }
   summary{
-  margin:0.5rem;text-wrap: pretty;
+  margin:0.5rem;text-wrap: balance;
   }
   ol ol{
   padding:0.3rem;
