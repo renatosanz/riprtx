@@ -14,24 +14,32 @@ const { title } = Astro.props;
         class="social-links__entry"
         target="_blank"
       >
-        <i class="fa-brands fa-2x fa-github-alt"></i>
+        <span>
+          <i class="fa-brands fa-2x fa-github-alt"></i>
+        </span>
       </a>
       <a
-        href="https://twitter.com/Renatox75732128"
+        href="https://x.com/riprtx"
         class="social-links__entry"
         target="_blank"
       >
-        <i class="fa-brands fa-2x fa-square-twitter"></i>
+        <span>
+          <i class="fa-brands fa-2x fa-square-twitter"></i>
+        </span>
       </a>
       <a
-        href="https://www.behance.net/renorenato"
+        href="https://www.behance.net/riprtx"
         class="social-links__entry"
         target="_blank"
       >
-        <i class="fa-brands fa-2x fa-square-behance"></i>
+        <span>
+          <i class="fa-brands fa-2x fa-square-behance"></i>
+        </span>
       </a>
       <a href="/about" class="social-links__entry">
-        <i class="fa-solid fa-2x fa-circle-info"></i>
+        <span>
+          <i class="fa-solid fa-2x fa-circle-info"></i>
+        </span>
       </a>
     </ul>
   </div>
@@ -49,18 +57,24 @@ const { title } = Astro.props;
     font-size: 3rem;
     font-family: "Lora", Courier, monospace;
   }
-  a {
+  a span{
     font-size: 25px;
-    color: var(--primary-color);
+    color: var(--font-color);
+    transition: 0.1s;
   }
-  div {
+  a span:hover{
+    color: var(--color-secondary);
+  }
+  ul{
+    padding: 0;
+  }
+  nav div {
     padding: 0 0;
     width: 100%;
     margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 10px;
   }
   .social-links {
     margin: auto 0 1rem;
