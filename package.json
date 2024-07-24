@@ -16,6 +16,7 @@
     "@astrojs/sitemap": "^3.1.4",
     "@fontsource/fira-code": "^5.0.16",
     "astro": "^3.5.7",
+    "copy-to-clipboard": "^3.3.3",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
     "typescript": "^5.3.2"

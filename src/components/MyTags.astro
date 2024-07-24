@@ -1,17 +1,21 @@
 ---
-
 const allPosts = await Astro.glob("../pages/blogs/*.md");
 
 const uniqueTags = [
   ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
 ];
-
 ---
 
 <footer>
   <ul>
     <li><a href="/">Home</a></li>
-    {uniqueTags.map((tag) => <a href={"/tags/"+tag}><li>{tag}</li></a>)}
+    {
+      uniqueTags.map((tag) => (
+        <a href={"/tags/" + tag}>
+          <li>{tag}</li>
+        </a>
+      ))
+    }
   </ul>
   <div>
     <p>&copy; 2024 Renato Sanchez. All rights reserved.</p>
@@ -20,7 +24,7 @@ const uniqueTags = [
 
 <style>
   footer {
-    font-family: "Inter", "Courier New", Courier, monospace;
+    font-family: "Lora", Courier, monospace;
     flex-direction: column;
     display: flex;
     gap: 0.5em;
@@ -28,10 +32,13 @@ const uniqueTags = [
     padding-bottom: 20em;
   }
   div {
-    margin: auto 0 auto auto;
+    margin: auto;
   }
-  a{
-    color: var(--primary-color);
+  p {
+    justify-content: center;
+  }
+  a {
+    color: var(--font-color);
   }
   ul {
     display: flex;
@@ -44,8 +51,9 @@ const uniqueTags = [
     flex-wrap: wrap;
   }
   li {
-    background: var(--select-bg-color);
-    padding: 0.5em;    border-radius: 8px;
+    background: var(--background-secondary);
+    padding: 0.5em;
+    border-radius: 8px;
   }
   li:hover {
     cursor: pointer;

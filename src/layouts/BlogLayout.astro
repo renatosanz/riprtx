@@ -2,12 +2,12 @@
 import MyTags from "../components/MyTags.astro";
 import Navbar from "../components/Navbar.astro";
 
-function onlyDateForm(date:number){
-  var newDate = new Date(date)
-  return newDate.toDateString()
+function onlyDateForm(date: number) {
+  var newDate = new Date(date);
+  return newDate.toDateString();
 }
-const {frontmatter} = Astro.props
-const {title,date,tags} = frontmatter
+const { frontmatter } = Astro.props;
+const { title, date, tags } = frontmatter;
 ---
 
 <!doctype html>
@@ -17,11 +17,20 @@ const {title,date,tags} = frontmatter
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="/normalize.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css" integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM" crossorigin="anonymous">
-    <link rel="icon" href="/icon.svg">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
+      integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="/icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
     <title>rip.rtx</title>
   </head>
   <body>
@@ -50,24 +59,22 @@ const {title,date,tags} = frontmatter
     display: none;
   }
   :root {
-    font-feature-settings:
-      "liga" 1,
-      "calt" 1; /* fix for Chrome */
-    --font-color: #000;
-    --primary-color: #4e4e4e;
-    --select-bg-color: #e7e7e7;
-    --bg-color: #fff;
+    --background-main: #fefefe;
+    --background-secondary: #cccccc;
+    --font-color:#333333;
+    --color-main: #ff5722;
+    --color-secondary: #ffb99b;
   }
   html {
-    font-family: 'Courier New', monospace;
-    line-height: 1.5;
-    background: var(--bg-color);
+    font-family: "Lora", "Arial", monospace;
+    line-height: 1.4;
+    background: var(--background-main);
     color: var(--font-color);
   }
   code {
     user-select: text;
     font-family:
-      'Courier New',
+      "Courier New",
       Menlo,
       Monaco,
       Lucida Console,
@@ -98,7 +105,7 @@ const {title,date,tags} = frontmatter
   }
   .info_blog h1 {
     margin-bottom: 0;
-    font-family: InterVariable,Arial, Helvetica, sans-serif;
+    color: var(--color-secondary);
   }
   .info_blog div {
     display: flex;
@@ -114,18 +121,18 @@ const {title,date,tags} = frontmatter
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1rem;
-    margin:0;
+    margin: 0;
   }
-  .info_blog a{
+  .info_blog a {
     background: var(--select-bg-color);
-    margin: 0.5rem 0 ;
+    margin: 0.5rem 0;
     padding: 0.3rem;
     border-radius: 8px;
   }
-  .creditsAndTags{
+  .creditsAndTags {
     display: flex;
   }
-  .creditsAndTags *{
+  .creditsAndTags * {
     margin: 0.5rem;
   }
   a {
@@ -145,18 +152,9 @@ const {title,date,tags} = frontmatter
   h5,
   h6,
   p {
-    margin:0.5rem;
+    margin: 0.5rem;
     text-wrap: pretty;
     word-wrap: break-word;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6{
-    font-family: InterVariable,Arial, Helvetica, sans-serif;
-    
   }
   h1 {
     font-size: 2rem;
@@ -169,21 +167,34 @@ const {title,date,tags} = frontmatter
     height: 100%;
     object-fit: scale-down;
   }
-  ul,ol{
-    margin:0.3rem;
-    padding:0 2rem;
+  ul,
+  ol {
+    margin: 0.3rem;
+    padding: 0 2rem;
   }
-  summary{
-  margin:0.5rem;text-wrap: balance;
+  summary {
+    margin: 0.5rem;
+    text-wrap: balance;
   }
-  ol ol{
-  padding:0.3rem;
+  ol ol {
+    padding: 0.3rem;
   }
   @media screen and (max-width: 800px) {
     #main-section {
       margin: auto;
       padding: 0.3rem;
       width: 100%;
+    }
+  }
+  .astro-code {
+    margin: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-main: #121212;
+      --background-secondary: #555555;
+      --font-color: #fefefe;
     }
   }
 </style>
