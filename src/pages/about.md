@@ -10,5 +10,3 @@ I am Renato, a music enthusiast, programming lover, and pixel art fan. I'm curre
 In this blog, you'll find various topics related to computing and art (both digital and audio). The programming languages I use in my projects range from C, C++, and ASM to Python and JavaScript. On my [YouTube](https://www.youtube.com/channel/UCm8PobyvjMSkn1BXAp6Tk2Q) and [SoundCloud](https://soundcloud.com/riprtx) channels, I've been uploading beats that I produce. If you want to contact me for research or other projects, you can find my contact information on my **[GitHub](https://github.com/renatosanz) profile**. Here's my [web portfolio](https://renatosanchez.netlify.app/).
 
 Thank you for taking the time to read my blog!
-
--> Renato Sanchez <-
