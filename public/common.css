@@ -1,0 +1,66 @@
+
+:root {
+  --background-main: #fefefe;
+  --background-secondary: #cccccc;
+  --font-color: #333333;
+  --color-main: #ff5722;
+  --color-secondary: #ffb99b;
+}
+
+html {
+  font-family: "Lora", monospace;
+  background: var(--background-main);
+  color: var(--font-color);
+}
+
+code {
+  font-family:
+    "Courier New",
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  display: flex;
+}
+
+#main-section {
+  margin: auto;
+  padding-top: 6rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-main);
+}
+
+ul {
+  list-style: none;
+}
+
+@media screen and (max-width: 800px) {
+  #main-section {
+    margin: auto;
+    padding: 1rem;
+    width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-main: #281a15;
+    --background-secondary: #3d2f2a;
+    --font-color: #fefefe;
+  }
+}

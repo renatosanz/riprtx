@@ -15,7 +15,7 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/common.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,11 +46,11 @@ const { title } = Astro.props;
   :root {
     --background-main: #fefefe;
     --background-secondary: #cccccc;
-    --font-color:#333333;
+    --font-color: #333333;
     --color-main: #ff5722;
     --color-secondary: #ffb99b;
   }
-  html{
+  html {
     font-family: "Lora", monospace;
     background: var(--background-main);
     color: var(--font-color);
@@ -90,16 +90,15 @@ const { title } = Astro.props;
   @media screen and (max-width: 800px) {
     #main-section {
       margin: auto;
-      padding: 1rem;
+      padding: 2rem 3rem;
       width: 100%;
     }
   }
 
-
   @media (prefers-color-scheme: dark) {
     :root {
-      --background-main: #121212;
-      --background-secondary: #555555;
+      --background-main: #281a15;
+      --background-secondary: #3d2f2a;
       --font-color: #fefefe;
     }
   }
