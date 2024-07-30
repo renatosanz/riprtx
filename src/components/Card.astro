@@ -4,7 +4,7 @@ interface CardProps {
 }
 
 import axios from 'axios';
-const { url }: CardProps = Astro.props;
+const { url } = Astro.props;
 
 // Fetch repository details based on the URL and render the card content
 async function fetchRepoDetails() {
@@ -23,19 +23,9 @@ async function fetchRepoDetails() {
   }
 }
 
-// Fetch repository language based on the URL
-const languageColorsResponse = await axios.get(
-  "https://raw.githubusercontent.com/ozh/github-colors/master/colors.json"
-);
+
 
 const repoDetails = await fetchRepoDetails();
-
-const languageColors = languageColorsResponse.data;
-const languageName = repoDetails?.language || "N/A";
-
-const color = languageColors[languageName]
-  ? languageColors[languageName].color
-  : "#0366d6";
 ---
 
 <script src="https://kit.fontawesome.com/3ededc33d4.js" crossorigin="anonymous"
