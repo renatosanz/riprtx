@@ -18,6 +18,9 @@ const { title, date, tags } = frontmatter;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="/normalize.css" />
+    <!-- HTML in your document's head -->
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
@@ -61,7 +64,7 @@ const { title, date, tags } = frontmatter;
   :root {
     --background-main: #fefefe;
     --background-secondary: #cccccc;
-    --font-color:#333333;
+    --font-color: #333333;
     --color-main: #ff5722;
     --color-secondary: #ffb99b;
   }

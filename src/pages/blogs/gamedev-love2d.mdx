@@ -5,6 +5,8 @@ author: ["Renato Sanchez"]
 tags: ["GameDev"]
 date: 2024-07-23
 ---
+import Card from "/src/components/Card.astro"
+
 
 Love2d is a nice game framework to enter into game dev, that's because a lot of engines works with concepts pretty complex behind all these stuff. For this reason, I've started using Love2d on personal basic projects, so I'm here to explain to you how start on this way.
 
@@ -64,6 +66,34 @@ Now let's talk about them.
 Inside this function we going to load all the stuff required for the game, also we can create bodies, load images, set timers, define varibles, etc. This because some things don't need to be loaded every frame and here we can call them to use later.
 
 #### `love.update(dt)`
+
 Here all the game is updated every frame, this includes calculate maths, angles, algorithms and everything needed to draw the game. In this function we'll bind all the keys to wait for an input and activate actions.
 
 #### `love.draw()`
+
+Every character need a sprite or a figure (minimun) and inside this function we going to declare this, using the `love.graphics` functions we have access to all the geometric functions to draw and paint sprites.  
+
+# Libreries
+
+On this course we can use the build-in functions of love2d but I think this is not nessesary when already many people on the internet have constructed a whole of libreries ready to use. That's why I decided to present the libs I use on my proyects. I thanks to [a327ex](https://github.com/a327ex), that made a blog Love2d where I learned a lot of things, also he made too many libreries to use love2d.
+
+## Physics 
+<Card url="https://github.com/a327ex/windfield"/>
+
+## Inputs
+<Card url="https://github.com/a327ex/boipushy"/>
+
+## Camera 
+<Card url="https://github.com/a327ex/STALKER-X"/>
+
+## Timers 
+<Card url="https://github.com/vrld/hump"/>
+
+## Object Oriented Programming
+<Card url="https://github.com/rxi/classic"/>
+ 
+## UI 
+https://gitea.it/1414codeforge/yui
+
+## Extras 
+<Card url="https://github.com/Yonaba/Moses"/>
