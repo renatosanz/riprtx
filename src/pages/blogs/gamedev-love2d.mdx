@@ -1,20 +1,20 @@
 ---
-layout: ../../layouts/BlogLayout.astro
-title: "GameDev with love(2d)"
-author: ["Renato Sanchez"]
-tags: ["GameDev"]
-date: 2024-07-23
+layout: ../../layouts/BlogLayout.astro  
+title: "GameDev with Love (2D)"  
+author: ["Renato Sanchez"]  
+tags: ["GameDev"]  
+date: 2024-07-23  
 ---
-import Card from "/src/components/Card.astro"
 
+import Card from "/src/components/Card.astro";
 
-Love2d is a nice game framework to enter into game dev, that's because a lot of engines works with concepts pretty complex behind all these stuff. For this reason, I've started using Love2d on personal basic projects, so I'm here to explain to you how start on this way.
+Love2d is a great framework for getting into game development because many engines work with quite complex concepts behind the scenes. For this reason, I started using Love2d for personal basic projects, and I'm here to explain how to get started in this way.
 
-## Love2d Install
+## Installing Love2d
 
-For run Love2d, first we have to install Lua, which is a powerful programming language used in a lot of actual projects like **Neovim, Web Apps and Roblox map-making**.
+To run Love2d, you first need to install Lua, which is a powerful programming language used in many modern projects like **Neovim, web apps, and Roblox map-making**.
 
-On Windows (Chocolatey ):
+On Windows (Chocolatey):
 
 ```bash
 choco install lua53
@@ -23,35 +23,35 @@ choco install lua53
 On Ubuntu:
 
 ```bash
-sudo apt install lua5.3 #or other versions
+sudo apt install lua5.3 # or other versions
 ```
 
-On others systems:
+On other systems:
 
 ```bash
 #------- Brew -------
 brew install lua
 
-#------- Arch based (pacman) -------
+#------- Arch-based (pacman) -------
 sudo pacman -S lua
 
-#------- On RHEL, CentOS, Rocky & AlmaLinux -------
- yum install epel-release
- yum install lua
+#------- On RHEL, CentOS, Rocky, and AlmaLinux -------
+yum install epel-release
+yum install lua
 
 #------- On Fedora Linux -------
- dnf install lua
+dnf install lua
 ```
 
-Once you have installed Lua, Love2d will be available. I recommend that you visit the [official website](https://love2d.org/) and follow the instructions depending on your system.
+Once you have installed Lua, Love2d will be available. I recommend visiting the [official website](https://Love2d.org/) and following the instructions depending on your system.
 
-## Game structure
+## Game Structure
 
-Love2d works in 3 basic functions: `load(), update(), draw()`. Each of the previous functions must be declared on the principal file name **main.lua** which is essential to run Love2d (where's all of the physics, classes, objects and stuff of the game).
+Love2d works with 3 basic functions: `load()`, `update()`, `draw()`. Each of these functions must be declared in the main file named **main.lua**, which is essential for running Love2d (where all the physics, classes, objects, and other game elements are handled).
 
 ### main.lua
 
-Here we going to write our first Love2d game! _So let's go_. First we need put the previous functions inside the `main.lua` file.
+Here, we are going to write our first Love2d game! _So let's get started_. First, we need to put the functions into the `main.lua` file.
 
 ```lua
 function love.load() end
@@ -59,41 +59,82 @@ function love.update(dt) end
 function love.draw() end
 ```
 
-Now let's talk about them.
+Now, let’s discuss them.
 
 #### `love.load()`
 
-Inside this function we going to load all the stuff required for the game, also we can create bodies, load images, set timers, define varibles, etc. This because some things don't need to be loaded every frame and here we can call them to use later.
+Inside this function, we are going to load all the necessary resources for the game; we can also create bodies, load images, set timers, define variables, etc. This is because some things don’t need to be loaded every frame, and here we can call them for later use.
 
 #### `love.update(dt)`
 
-Here all the game is updated every frame, this includes calculate maths, angles, algorithms and everything needed to draw the game. In this function we'll bind all the keys to wait for an input and activate actions.
+Here, the game is updated every frame. This includes calculating math, angles, algorithms, and everything needed to draw the game. In this function, we’ll bind all the keys to wait for input and trigger actions.
 
 #### `love.draw()`
 
-Every character need a sprite or a figure (minimun) and inside this function we going to declare this, using the `love.graphics` functions we have access to all the geometric functions to draw and paint sprites.  
+Every character needs a sprite or a figure (at minimum), and inside this function, we declare this using `love.graphics` functions, giving us access to all the geometric functions to draw and paint sprites.
 
-# Libreries
+# Libraries
 
-On this course we can use the build-in functions of love2d but I think this is not nessesary when already many people on the internet have constructed a whole of libreries ready to use. That's why I decided to present the libs I use on my proyects. I thanks to [a327ex](https://github.com/a327ex), that made a blog Love2d where I learned a lot of things, also he made too many libreries to use love2d.
+In this course, we can use the built-in functions of Love2d, but I think it’s unnecessary since many people on the internet have created a whole set of libraries ready to use. That’s why I’ve decided to present the libraries I use in my projects. I’m grateful to [a327ex](https://github.com/a327ex) for creating a Love2d blog where I learned a lot, and for making many libraries for Love2d.
 
-## Physics 
-<Card url="https://github.com/a327ex/windfield"/>
+I highly recommend checking out the documentation for each library. You can also check out this repo where there are more libraries for Love2d.
+
+<Card url="https://github.com/love2d-community/awesome-love2d" />
+
+## Physics
+
+<Card url="https://github.com/a327ex/windfield" />
+
+This library is pretty easy to use because it sets up all the necessary components to handle a body. I like this because we don’t want problems while coding the game.
+
+Windfield works like this: first, you create a world, then you can create bodies, joints, and apply physics.
+
+Here’s an example:
+
+```lua
+Physics = require("path/to/windfield")
+
+function love.load()
+  -- create a world with no gravity
+  world = Physics.newWorld(0,0) 
+
+  -- create a rectangle at (0,0) with dimensions 10x30
+  body = world:newRectangleCollider(0,0,10,30) 
+  -- we can modify every attribute of the body
+  body:setRestitution(0.1) 
+end
+
+function love.update(dt)
+  -- update the world physics
+  world:update(dt)
+end
+
+function love.draw() 
+  -- draw the world (only body borders)
+  world:draw()
+end
+```
 
 ## Inputs
-<Card url="https://github.com/a327ex/boipushy"/>
 
-## Camera 
-<Card url="https://github.com/a327ex/STALKER-X"/>
+<Card url="https://github.com/a327ex/boipushy" />
 
-## Timers 
-<Card url="https://github.com/vrld/hump"/>
+## Camera
 
-## Object Oriented Programming
-<Card url="https://github.com/rxi/classic"/>
- 
-## UI 
-https://gitea.it/1414codeforge/yui
+<Card url="https://github.com/a327ex/STALKER-X" />
 
-## Extras 
-<Card url="https://github.com/Yonaba/Moses"/>
+## Timers
+
+<Card url="https://github.com/vrld/hump" />
+
+## Object-Oriented Programming
+
+<Card url="https://github.com/rxi/classic" />
+
+## UI
+
+<Card url="https://gitea.it/1414codeforge/yui" />
+
+## Extras
+
+<Card url="https://github.com/Yonaba/Moses" />
