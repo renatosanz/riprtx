@@ -49,7 +49,7 @@ Love2d works in 3 basic functions: `load(), update(), draw()`. Each of the previ
 
 ### main.lua
 
-Here we going to write our first Love2d game! *So let's go*. First we need put the previous functions inside the `main.lua` file.
+Here we going to write our first Love2d game! _So let's go_. First we need put the previous functions inside the `main.lua` file.
 
 ```lua
 function love.load() end
@@ -60,5 +60,10 @@ function love.draw() end
 Now let's talk about them.
 
 #### `love.load()`
+
+Inside this function we going to load all the stuff required for the game, also we can create bodies, load images, set timers, define varibles, etc. This because some things don't need to be loaded every frame and here we can call them to use later.
+
 #### `love.update(dt)`
+Here all the game is updated every frame, this includes calculate maths, angles, algorithms and everything needed to draw the game. In this function we'll bind all the keys to wait for an input and activate actions.
+
 #### `love.draw()`

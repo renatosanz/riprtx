@@ -13,7 +13,7 @@ function orderByDate(d1, d2) {
   return 0;
 }
 
-let allPosts = await Astro.glob("./blogs/*.md");
+let allPosts = await Astro.glob("./blogs/*.mdx");
 allPosts = allPosts.sort(orderByDate);
 
 function onlyDateForm(date: number) {
