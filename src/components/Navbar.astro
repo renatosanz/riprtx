@@ -7,7 +7,7 @@ const { title } = Astro.props;
 
 <nav>
   <div>
-    <h1>{title}</h1>
+    <a href="/"><h1>{title}</h1></a>
     <ul class="social-links">
       <a
         href="https://github.com/renatosanz"
@@ -15,7 +15,7 @@ const { title } = Astro.props;
         target="_blank"
       >
         <span>
-          <i class="fa-brands fa-2x fa-github-alt"></i>
+          <i class="fa-brands fa-github-alt"></i>
         </span>
       </a>
       <a
@@ -24,7 +24,7 @@ const { title } = Astro.props;
         target="_blank"
       >
         <span>
-          <i class="fa-brands fa-2x fa-square-twitter"></i>
+          <i class="fa-brands  fa-square-twitter"></i>
         </span>
       </a>
       <a
@@ -33,12 +33,12 @@ const { title } = Astro.props;
         target="_blank"
       >
         <span>
-          <i class="fa-brands fa-2x fa-square-behance"></i>
+          <i class="fa-brands  fa-square-behance"></i>
         </span>
       </a>
       <a href="/about" class="social-links__entry">
         <span>
-          <i class="fa-solid fa-2x fa-circle-info"></i>
+          <i class="fa-solid  fa-circle-info"></i>
         </span>
       </a>
     </ul>
@@ -55,7 +55,7 @@ const { title } = Astro.props;
     margin: 0.5rem 0;
     color: var(--color-main);
     font-size: 3rem;
-    font-family: "Lora", Courier, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
   a span{
     font-size: 25px;
@@ -83,5 +83,8 @@ const { title } = Astro.props;
     div {
       flex-wrap: wrap;
     }
+  }
+  i{
+    height:1rem
   }
 </style>

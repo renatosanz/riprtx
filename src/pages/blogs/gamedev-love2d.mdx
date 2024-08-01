@@ -1,9 +1,10 @@
 ---
-layout: ../../layouts/BlogLayout.astro  
-title: "GameDev with Love (2D)"  
-author: ["Renato Sanchez"]  
-tags: ["GameDev"]  
-date: 2024-07-23  
+layout: ../../layouts/BlogLayout.astro
+title: "GameDev with Love (2D)"
+author: ["Renato Sanchez"]
+tags: ["GameDev", "Love2d","Art"]
+description: "Start your Love2d journey!!! I'll get over libreries and programming technices to get a finel game."
+date: 2024-07-23
 ---
 
 import Card from "/src/components/Card.astro";
@@ -81,6 +82,24 @@ I highly recommend checking out the documentation for each library. You can also
 
 <Card url="https://github.com/love2d-community/awesome-love2d" />
 
+## Object-Oriented Programming
+
+<Card url="https://github.com/rxi/classic" />
+
+When we are developing a game is necesary to generate objects to control each character, npc or item in the game. Love2d doesn't includes an OOP handler or manager, that's why I like to use Classic, because this librarie manage tipical functions of Objects like `extend()` or `self.super:func()` to call functions of parent objects.
+
+I like to create one file for each character. For example, on a `Player.lua`:
+
+```lua
+Physics = require("path/to/Object")
+Player = Object:extend()
+
+function Player:new(area,x,y,opts)
+  player.super:new(area,x,y,opts)
+end
+
+```
+
 ## Physics
 
 <Card url="https://github.com/a327ex/windfield" />
@@ -96,12 +115,12 @@ Physics = require("path/to/windfield")
 
 function love.load()
   -- create a world with no gravity
-  world = Physics.newWorld(0,0) 
+  world = Physics.newWorld(0,0)
 
   -- create a rectangle at (0,0) with dimensions 10x30
-  body = world:newRectangleCollider(0,0,10,30) 
+  body = world:newRectangleCollider(0,0,10,30)
   -- we can modify every attribute of the body
-  body:setRestitution(0.1) 
+  body:setRestitution(0.1)
 end
 
 function love.update(dt)
@@ -109,7 +128,7 @@ function love.update(dt)
   world:update(dt)
 end
 
-function love.draw() 
+function love.draw()
   -- draw the world (only body borders)
   world:draw()
 end
@@ -127,13 +146,9 @@ end
 
 <Card url="https://github.com/vrld/hump" />
 
-## Object-Oriented Programming
-
-<Card url="https://github.com/rxi/classic" />
-
 ## UI
 
-<Card url="https://gitea.it/1414codeforge/yui" />
+https://gitea.it/1414codeforge/yui
 
 ## Extras
 
