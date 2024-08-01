@@ -2,7 +2,7 @@
 layout: ../../layouts/BlogLayout.astro
 title: "GameDev with Love (2D)"
 author: ["Renato Sanchez"]
-tags: ["GameDev", "Love2d","Art"]
+tags: ["GameDev", "Love2d"]
 description: "Start your Love2d journey!!! I'll get over libreries and programming technices to get a finel game."
 date: 2024-07-23
 ---
@@ -91,14 +91,31 @@ When we are developing a game is necesary to generate objects to control each ch
 I like to create one file for each character. For example, on a `Player.lua`:
 
 ```lua
-Physics = require("path/to/Object")
+Object = require("path/to/Object")
 Player = Object:extend()
 
 function Player:new(area,x,y,opts)
-  player.super:new(area,x,y,opts)
+  self.super:new(area,x,y,opts)
 end
 
+function Player:update(dt)
+  self.super:update(dt)
+  --update body physics
+
+  --update controls
+end
+
+function Player:draw()
+  self.super:draw()
+end
 ```
+On this way we call the object Plater on the `main.lua` by :
+
+```lua
+
+
+```
+
 
 ## Physics
 
