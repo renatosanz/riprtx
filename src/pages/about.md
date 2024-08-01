@@ -3,6 +3,8 @@ layout: ../layouts/BlogLayout.astro
 title: "Who I'm?"
 author: "Renato Sanchez"
 date: "June 2024"
+tags: ["About"]
+description: ""
 ---
 
 I am Renato, a music enthusiast, programming lover, and pixel art fan. I'm currently in my 7th semester of a computer science degree at BUAP University. I have to say, I've never been more interested in art and computing than since I discovered processing and computer vision.
