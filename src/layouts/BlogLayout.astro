@@ -18,9 +18,11 @@ const { title, date, tags } = frontmatter;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="/normalize.css" />
-    <!-- HTML in your document's head -->
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link
+      href="https://fonts.cdnfonts.com/css/cascadia-code"
+      rel="stylesheet"
+    />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
@@ -41,14 +43,14 @@ const { title, date, tags } = frontmatter;
         </div>
         <div class="tag-content">
           <div>
-          {
-            Astro.props.frontmatter.tags.map((tag) => (
+            {
+              Astro.props.frontmatter.tags.map((tag) => (
                 <a href={"/tags/" + tag}>
                   <i class="fa-solid fa-tag" />
                   <p style="text-decoration:underline;">{tag}</p>
                 </a>
-            ))
-          }
+              ))
+            }
           </div>
           <p>{Astro.props.frontmatter.description}</p>
         </div>
@@ -74,15 +76,7 @@ const { title, date, tags } = frontmatter;
       --color-secondary: #ffb99b;
     }
     html {
-      font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Monaco,
-        Consolas,
-        Liberation Mono,
-        Courier New,
-        monospace;
+      font-family: "Cascadia Code", "Courier New", Courier, monospace;
       line-height: 1.4;
       background: var(--background-main);
       color: var(--font-color);
@@ -90,16 +84,7 @@ const { title, date, tags } = frontmatter;
     code {
       font-size: 0.875rem;
       user-select: text;
-      font-family:
-        "Courier New",
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
+      font-family: "Cascadia Code", "Courier New", Courier, monospace;
     }
     pre {
       white-space: nowrap;
@@ -195,11 +180,11 @@ const { title, date, tags } = frontmatter;
     }
 
     .tag-content {
-      display:flex;
+      display: flex;
       flex-direction: row;
       gap: 1rem;
     }
-    .tag-content div{
+    .tag-content div {
       width: 100%;
       flex-wrap: wrap;
     }
@@ -209,7 +194,7 @@ const { title, date, tags } = frontmatter;
       gap: 0.2rem;
     }
     .tag-content div * {
-      margin: auto ;
+      margin: auto;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -218,7 +203,7 @@ const { title, date, tags } = frontmatter;
         --font-color: #fefefe;
       }
     }
-    hr{
+    hr {
       width: 100%;
     }
   </style>
