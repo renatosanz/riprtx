@@ -1,0 +1,312 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "Cryptography - Notes 2024"
+author: ["Renato Sanchez"]
+tags: ["notes", "Crypto"]
+description: "Cryptography notes about the first ciphers, symetric and asymetric key ciphers. In add some operation modes for symetric key ciphers."
+date: 2024-09-12
+---
+
+# Ancient Ciphers
+
+## Caesar Cipher
+
+Each letter is replaced by the 3rd one that follows it. To do this, each letter is assigned a number.
+
+$$
+k = 3
+$$
+
+$$
+C = E(p) = (p + k) mod (26)
+$$
+
+$$
+p = D(C) = (C - k) mod (26)
+$$
+
+## Monoalphabetic Cipher
+
+Instead of shifting the alphabet to the right, randomly substitute each letter. Take the alphabet and shuffle it, so that the first letter in the shuffled alphabet becomes 'a', then 'b', and so on.
+
+## Vigenère Cipher
+
+This cipher is based on multiple Caesar ciphers, using a Vigenère table, which has the entire alphabet in both rows and columns. Each letter from the _key_ and the _message_ is used to find the corresponding character in the table for substitution.
+
+```txt
+key :  lectura
+encryption key : lecturalecturalectural
+message        : quevivalaferiadellibro
+ciphertext     : BYGODMAWEHXLZAOINECSRZ
+```
+
+## Autokey Cipher
+
+Similar to Vigenère. Use a word as the key, followed by the plaintext itself.
+
+## One-Time Pad
+
+Choose a random key that is the same length as the plaintext and use it only once.
+
+# Symmetric Key Cipher
+
+This is based on having a single key used to both encrypt and decrypt.
+
+## DEA (64-bit input)
+
+A symmetric key algorithm that provides confusion (the plaintext is not found in the ciphertext) and diffusion (the key or key material is not found in the ciphertext). It consists of 16 rounds in which columns are permuted, along with the use of S-boxes.
+
+## AES - Advanced Encryption Standard
+
+The plaintext is stored in a 4x4 matrix, and similarly, the key is stored in another 4x4 matrix, both in hexadecimal.
+
+### Process
+
+```
+1. ARK
+2. for(i=1,i+1,i=10){
+  SB;
+  SR;
+  MC;
+  +ARK;
+}
+3. SB;
+   SR;
+   ARK;
+```
+
+- Byte Substitution (1 S-box for each byte is used)
+- Shift Rows (Permutes bytes between groups/columns)
+- Mix Columns (Substitutes using a matrix-multiplied group)
+- Add Round Key (State XOR with key material)
+
+> Depending on the security level, the rounds are:
+>
+> - 128 bits / 9 rounds
+> - 192 bits / 11 rounds
+> - 256 bits / 13 rounds
+
+### Modes of Operation
+
+#### Electronic Codebook (ECB)
+
+This mode divides the plaintext into blocks, and each block is encrypted separately. The ciphertext is obtained by concatenating all the encrypted blocks.
+
+Advantages:
+
+- Secure transmission of individual values
+- Allows parallel encryption of blocks
+
+Disadvantages:
+
+- Repetitions in the message can appear in the ciphertext
+- Weakness due to the independence of encrypted message blocks
+- Sends few data blocks
+
+#### Cipher Block Chaining (CBC)
+
+In this mode, each plaintext block is XORed with the previous ciphertext block before encryption. A unique initialization vector (IV) is used to make each message distinct.
+
+Advantages:
+
+- Ensures identical plaintext blocks produce different ciphertext blocks, as long as the IV is unique and random for each encryption session.
+- Useful for block-oriented transmissions.
+
+Disadvantages:
+
+- Parallel encryption is not possible.
+- Each ciphertext block depends on all previous blocks.
+- A change in the message affects all subsequent ciphertext blocks and the original block.
+
+#### Cipher Feedback (CFB)
+
+CFB converts a block cipher into a self-synchronizing stream cipher. It uses an IV, encrypts it, and XORs the output with the plaintext block to produce ciphertext. The ciphertext block is then used as the next input.
+
+Advantages:
+
+- Suitable for data arriving in bytes/bits
+- Most common mode for transmission
+- Used to encrypt data of arbitrary length
+
+Disadvantages:
+
+- Must stop after encrypting every n-bits.
+- Errors propagate for several blocks after the error.
+- The IV doesn't need to be secret but must be unpredictable.
+
+#### Output Feedback (OFB)
+
+OFB also converts a block cipher into a synchronous stream cipher. An IV is encrypted, and the output is XORed with the plaintext block to produce the ciphertext. The output of the block cipher, not the ciphertext, is used as the next input.
+
+Advantages:
+
+- Useful when error responses are problematic or when encryption must occur before the message is available.
+- Similar to CFB, but feedback comes from the block cipher output and is independent of the message.
+
+Disadvantages:
+
+- Sequential and cannot be parallelized.
+
+#### Counter (CTR)
+
+CTR mode converts a block cipher into a stream cipher by generating the next key block by encrypting successive values of a counter. The counter can be any simple function that produces a sequence of numbers with minimal repetition.
+
+Advantages:
+
+- Efficient: Enables parallel encryption in advance.
+- Good for high-speed links with bursts.
+- Provides random access to encrypted data blocks.
+
+Disadvantages:
+
+- Demonstrable security, but reuse of key/counter values could break security.
+
+#### Cipher Message Authentication Code (CMAC)
+
+Specifies an algorithm for generating a message authentication code (MAC) based on a symmetric key block cipher.
+
+Advantages:
+
+- Guarantees the authenticity and integrity of binary data.
+- Detects unauthorized or accidental modifications to data.
+
+Disadvantages:
+
+- Only generates a MAC for message integrity/authentication, not encryption. Must be used with an encryption mode if confidentiality is needed.
+- Performance may be lower with very short or very long messages compared to other authentication algorithms.
+
+#### Counter with Cipher Block Chaining Message Authentication Code (CCM)
+
+In this mode, CBC is applied to the payload, associated data, and nonce to generate a message authentication code (MAC). Then, counter mode (CTR) encryption is applied to the MAC and payload to produce the ciphertext.
+
+Advantages:
+
+- Designed for use in a packet environment, where all data is available in storage.
+
+Disadvantages:
+
+- Not designed for partial or continuous processing.
+
+#### Galois/Counter Mode
+
+Advantages:
+
+- Provides both data authentication and encryption.
+- Ensures both message confidentiality and integrity.
+- Encryption and authentication can be performed in parallel.
+
+Disadvantages:
+
+- Requires a unique initialization vector (IV) for each message.
+- Requires a fixed-length IV.
+- Implementation errors can compromise system security.
+
+# Asymmetric Key Cipher
+
+This type of encryption uses two keys: a public and a private key. Other users can encrypt messages with the public key that only the recipient can decrypt with their private key. The public key can also be used to verify digital signatures. It is called asymmetric because the sender cannot decrypt or sign the messages.
+
+Public key encryption involves:
+
+- It is computationally infeasible to derive one key from the other.
+- Easy to encrypt or decrypt messages.
+- Large keys are used.
+
+Applications:
+
+- Encryption and decryption: ensures confidentiality.
+- Digital signatures: ensures authentication, integrity, and non-repudiation.
+- Key exchange: used to create session keys.
+
+It is based on three computationally difficult problems:
+
+- Factoring large prime numbers.
+- Discrete logarithm.
+- Elliptic curves.
+
+## Diffie-Hellman
+
+This is a scheme for securely exchanging keys.
+
+### Initialization
+
+1. Select a prime integer $q$.
+2. Let $a$ be a primitive root $mod(q)$.
+3. Each user selects a secret number $X_A < q$.
+4. Calculate the public key $Y_A = a^{X_A} mod(q)$.
+5. Each user publishes their public key $Y_A$.
+
+### Key Exchange
+
+Let $K_{AB}$ be the session key for A & B:
+
+$$K_{AB} = a^{X_A * X_B} mod(q)$$
+
+The attacker would need to solve a discrete logarithm to find $X$.
+
+# RSA
+
+A public-key algorithm that, to this day, remains unbroken. It uses very large integers, typically `2048 or 3072 bits`.
+
+## Initialization
+
+1. Each user selects two large primes: $p,q$.
+2. Calculate $N = p * q$, which gives a number of 3072 bits.
+3. Calculate $phi(N) = (p-1)(q-1)$.
+4. Select a random number $e$ such that $1 < e < phi(N), gcd(e, phi(N)) = 1$.
+5. Calculate $d = e^{-1} mod(phi(N))$.
+6. Publish: `<N, e>`.
+7. Store: `<p, q, d>`.
+
+## Signing
+
+1. $h = H(M)$.
+2. $S = h^d mod(N)$.
+3. $M' = M || S$.
+
+## Verification
+
+1. $M$.
+2. $h' = H(M)$.
+3. $h = S^e mod(N)$.
+4. If $h' == h$, it is valid; otherwise, reject.
+
+Potential attacks:
+
+- Brute force.
+- Mathematical attacks.
+- Timing attacks.
+
+# Hash Functions
+
+Hash functions generate a fixed-length summary, regardless of the length of the input. They must meet the following criteria:
+
+- **Collision-resistant**: It is computationally infeasible to find two inputs that produce the same hash code. _Security level: 1/2 the length of the hash code in bits_.
+- **First preimage resistance**: Given a random hash code $h$, it is computationally infeasible to find the message $m$ such that $H(m) = h$. _Security level: the length of the hash code in bits_.
+- **Second preimage resistance**: It is computationally infeasible to find two inputs that generate the same hash code. _Security level: the length of the hash code in bits_.
+
+## Applications
+
+- Digital signatures.
+- User identification.
+- MAC (message authentication code).
+- Pseudo-random number generation.
+- Handshake protocols `SSL/TLS`.
+
+# Digital Signature
+
+- Authentication.
+- Integrity.
+- Non-repudiation.
+
+## Signing
+
+1. The message is hashed: `H(M)`.
+2. `H(M)` is encrypted with the private key, generating a signature `S = E(H(M))`.
+3. The message is concatenated with the digital signature: `M || S`.
+
+## Verification
+
+1. Separate the signature from the message: `<M, S>`.
+2. Decrypt the signature with the public key: `h' = D(S)`.
+3. Generate the hash of the original message: `h = H(M)`.
+4. If `h' == h`, it is valid; otherwise, reject.

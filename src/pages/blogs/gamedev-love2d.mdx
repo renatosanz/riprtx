@@ -109,13 +109,13 @@ function Player:draw()
   self.super:draw()
 end
 ```
+
 On this way we call the object Plater on the `main.lua` by :
 
 ```lua
 
 
 ```
-
 
 ## Physics
 
@@ -155,15 +155,105 @@ end
 
 <Card url="https://github.com/a327ex/boipushy" />
 
+Every game needs an input flux to work, and this librarie will help us to manage
+that input signs.
+
+```lua
+function love.load()
+  IN = Input()
+  IN:bind("up","jump")
+  IN:bind("left","move_left")
+  IN:bind("right","move_right")
+end
+
+function love.update(dt)
+  if IN:pressed"jump") then
+    --calculate the jump - pressed only evaluate when the key goes down.
+  end
+  if IN:down("move_left") then
+    --calculate move to left - down evaluate every cycle while the key is down.
+  end
+end
+```
+
 ## Camera
 
 <Card url="https://github.com/a327ex/STALKER-X" />
+
+The camera is pretty important to get a inmersive game, that's why I love to use this lib, because is simple and ready to use.
+
+```lua
+function love.load()
+  camera = Camera()
+end
+
+function love.update(dt)
+  camera:update(dt)
+end
+
+function love.draw()
+  camera:attach()
+  -- Draw your game here
+  camera:detach()
+  camera:draw() -- Call this here if you're using camera:fade, camera:flash or debug drawing the deadzone
+end
+```
 
 ## Timers
 
 <Card url="https://github.com/vrld/hump" />
 
+When and enemy or item is alive, the most of the time they internally have a _timer_ with a predefined or random lifetime (miliseconds ,seconds or minutes).
+
+```lua
+function love.keypressed(key)
+  if key == ' ' then
+    Timer.after(1, function() print("Hello, world!") end)
+  end
+end
+
+function love.update(dt)
+  Timer.update(dt)
+end
+```
+
 ## UI
+
+Buttons, input text or modals are essential to interact with the game interface, maybe on a main menu or settings menu.
+
+```lua
+local yui = require 'lib.yui'
+
+function love.load()
+  local w, h = 300, 80
+  local x = math.floor((love.graphics.getWidth() - w) / 2)
+  local y = math.floor((love.graphics.getHeight() - h) / 2)
+
+  ui = yui.Ui:new {
+    x = x, y = y,
+
+    yui.Rows {
+      yui.Label {
+        w = w, h = h / 2,
+        text = "Hello, World!"
+      },
+      yui.Button {
+        text = "Close",
+
+        onHit = function() love.event.quit() end
+      }
+    }
+  }
+end
+
+function love.update(dt)
+  ui:update(dt)
+end
+
+function love.draw()
+  ui:draw()
+end
+```
 
 https://gitea.it/1414codeforge/yui
 
