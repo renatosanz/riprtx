@@ -30,12 +30,12 @@ function onlyDateForm(date:number){
 ---
 
 <Layout title={tag}>
-  <ul>
+  <ul  class="postslist">
     {
       posts.map((post)=>
             <a href={post.url}>
           <li>
-            <div>{post.frontmatter.title}</div>
+            <div class="postName">{post.frontmatter.title}</div>
             {post.frontmatter.tags.includes("In Progress") ? <div>In Progress</div> : <div>{onlyDateForm(post.frontmatter.date)}</div>}
           </li>
           </a>
@@ -44,10 +44,10 @@ function onlyDateForm(date:number){
   </ul>
 </Layout>
 
-
+ 
 
 <style>
-  ul {
+  .postslist {
     margin: 1em 0 0 0;
     padding: 0;
     display: flex;
@@ -59,14 +59,13 @@ function onlyDateForm(date:number){
     display: flex;
     flex-direction: row;
     text-wrap: balance;
-    padding: 0.75rem;
-    gap: 0.5em;
     transition: 0.1s;
-    border-bottom: 3px solid var(--select-bg-color);
+    padding: 5px 5px 5px 0 ;
+  }
+  a{
+    color: var(--font-color);
   }
   li:hover {
-    background: var(--select-bg-color);
-    padding-left: 25px;
     text-decoration: underline;
   }
   @media screen and ((max-width: 800px)) {
@@ -74,9 +73,12 @@ function onlyDateForm(date:number){
       padding: 0.5em;
     }
     li:hover {
-      background: var(--select-bg-color);
+      background: var(--font-color);
       padding-left: 0.5em;
       text-decoration: underline;
     }
+  }
+  .postName {
+    font-weight: 900;
   }
 </style>

@@ -1,0 +1,34 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "Preprocessing Text Datasets"
+author: ["Renato Sanchez"]
+tags: ["notes","data mining"]
+description: "Objective: Facilitate text processing by transforming raw data."
+date: 2024-10-04
+---
+
+- Data quality review: Analyze missing values, duplicates, and relevance.
+- Text cleaning: Remove noisy data, irrelevant data, or data outside the study’s context.
+- **Remove punctuation**: Identify and remove irrelevant punctuation, while preserving necessary ones if required.
+- **Remove numbers**: Depending on whether they add value to the study or not.
+- **Whitespace normalization**: Remove double spaces between sentences.
+- **Convert to lowercase or uppercase**.
+- **Lemmatization**: Convert words to their base form, whether verbs or other parts of speech.
+- **Remove `stopwords`**: Common words that don't add significant meaning, such as conjunctions or short words.
+- **Word tokenization**: Split the text into individual words or tokens for statistical analysis.
+- **N-gram tokenization**: Capture sets of n words (n-grams) to understand context.
+- **Bag of words**: Represent text as a word count matrix, yielding a matrix with the number of occurrences for each word. --> **corpus**
+- **TF-IDF representation**: Inverse document frequency - $wordFrequency/totalWords$
+- **Embedding**: Represent words as dense vectors in high-dimensional space (Word2Vec, GloVe, FastText).
+- **Oversampling**: Increase the examples of the minority class, useful in classification problems with imbalanced classes.
+- **Undersampling**: Reduce examples from the majority class, useful when there is an excess of examples from one class.
+- **Dimensionality reduction**: Identify and remove words with very low frequency in the corpus.
+- **PCA reduction**: Reduce the number of dimensions in word vectors.
+
+# Resampling
+
+Split the data for evaluation.
+How to divide datasets into subsets by percentage for training/validation.
+
+- Percentage validation: Take a percentage of the data for test and training (70%-30%).
+- Cross-validation: Split the data into several $k$ (3,5,10) subsets and randomly select one $k$ subset for testing while using the rest for training. The accuracy is the mean of the iterations.

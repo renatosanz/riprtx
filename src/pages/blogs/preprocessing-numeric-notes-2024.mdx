@@ -1,0 +1,59 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "Preprocessing Numerical Datasets"
+author: ["Renato Sanchez"]
+tags: ["notes","data mining"]
+description: "Handling outliers, missing data, or inconsistent scales."
+date: 2024-09-11
+---
+
+1. **Review data quality**: Identify missing values, eliminate columns or rows with missing values. Simple imputation: use mean, mode, or median to fill in missing values. Advanced imputation: use KNN or regression to fill in **missing** values.
+2. Check for duplicate rows.
+3. **Identify outliers**: Values that fall outside the typical data range.
+   - Standard deviation
+   - Interquartile range
+4. **Data scaling** (Normalization): Theory suggests standardizing data between 0 and 1.
+5. Logarithmic transformations: Reduce skewness in the distribution.
+   - Box-Cox
+6. Encoding categorical variables:
+   - One-Hot Encoding: Convert categorical variables into binary columns -> unordered
+   - Label Encoding -> ordered
+7. Feature selection.
+8. Remove collinearity: It may introduce redundancy into the model. Use correlation matrices and VIF.
+
+## Dimensionality Reduction
+
+PCA -> Reduces data size while maintaining the same amount of variance. Component reduction.
+
+### LDA (Linear Discriminant Analysis)
+
+Aims to project data into a lower-dimensional space to observe relationships.
+
+- MF and NMF
+- T-SNE
+- Autoencoder
+
+## Division into two sets: training and testing
+
+- 70% training - 30% testing (common)
+- 80% training - 20% testing (common)
+- 90% training - 10% testing
+
+### Cross-Validation `(K-fold)`
+
+Split the dataset into multiple subsets depending on the `K-fold` value.
+
+## Class Balancing
+
+Standardizing data:
+
+- Oversampling: Increase the number of minority class data by duplicating examples.
+- Undersampling: Reduce the number of majority class data by eliminating examples.
+- SMOTE: Create synthetic examples of the minority class to balance the classes.
+
+## Objectives
+
+- Reduce training time
+- Increase accuracy
+- Make data compatible with algorithms
+- Interpretability
