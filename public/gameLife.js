@@ -4,7 +4,6 @@ let ctxGrid = grid.getContext("2d");
 let rows = Math.floor(grid.offsetHeight / resolution);
 let columns = Math.floor(grid.offsetWidth / resolution);
 let game = new Array(rows);
-console.log(rows, columns);
 setupGame(game);
 
 function generateGrid(game) {
@@ -14,7 +13,6 @@ function generateGrid(game) {
       game[i][j] = Math.round(Math.random());
     }
   }
-  console.table(game);
 }
 
 function draw(array) {
