@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GameOfLifeCanvas from "../components/GameOfLifeCanvas"
+import GameOfLifeCanvas from "../components/GameOfLifeCanvas";
 
 function orderByDate(d1, d2) {
   let n1 = new Date(d1.frontmatter.date).getTime();
@@ -14,19 +14,25 @@ function orderByDate(d1, d2) {
   return 0;
 }
 
-let allPosts = await Astro.glob("./blogs/*.mdx");
-allPosts = allPosts.sort(orderByDate);
+let allPosts = await import.meta.glob("./blogs/*.mdx");
+let orderedPosts = [];
+
+for (const post in allPosts) {
+  let blogpost = await allPosts[post]();
+  orderedPosts.push(blogpost);
+}
+
+orderedPosts = orderedPosts.sort(orderByDate);
 
 function onlyDateForm(date: number) {
   var newDate = new Date(date);
   return newDate.toDateString();
 }
 ---
-
 <Layout title="rip.rtx">
   <ul class="postslist">
     {
-      allPosts.map((post) => (
+      orderedPosts.map((post) => (
         <a href={post.url}>
           <li>
             <div class="postName">{post.frontmatter.title}</div>
@@ -36,7 +42,7 @@ function onlyDateForm(date: number) {
       ))
     }
   </ul>
-  <GameOfLifeCanvas client:load/>
+  <GameOfLifeCanvas client:load />
 </Layout>
 
 <style>
@@ -53,9 +59,9 @@ function onlyDateForm(date: number) {
     flex-direction: row;
     text-wrap: balance;
     transition: 0.1s;
-    padding: 5px 5px 5px 0 ;
+    padding: 5px 5px 5px 0;
   }
-  a{
+  a {
     color: var(--font-color);
   }
   li:hover {

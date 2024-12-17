@@ -1,0 +1,76 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "Setup LAMP & phpMyAdmin"
+author: ["Renato Sanchez"]
+tags: ["LAMP","Ubuntu 24 LTS","MySQL"]
+description: "How to setup LAMP & phpMyAdmin on Ubuntu 24.04 LTS"
+date: 2024-12-17
+---
+
+Here is your corrected markdown, with orthographic and grammatical errors fixed:
+
+LAMP is an abbreviation for Linux-Apache-MySQL-PHP. On Windows, there's a simple software called XAMPP that installs and configures those components to work together.
+
+In addition, XAMPP provides a user interface to manage databases, called **phpMyAdmin**. But on Linux, it’s a different story because you need to follow a YouTube or Stack Overflow tutorial to set up everything manually.
+
+## Update Your System
+
+That's why I decided to share my solution for this situation. This solution works on Ubuntu 24 LTS.
+
+```
+sudo apt update
+
+```
+
+## Set Up Apache 2
+
+```
+sudo apt install apache2
+sudo ufw app list
+sudo ufw allow in "Apache"
+sudo ufw status # If inactive, run: sudo ufw enable
+
+```
+
+## Set Up MySQL
+
+```
+sudo apt install mysql-server
+sudo mysql
+
+```
+
+Replace `'password'` with your desired root password in the following command:
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; # Set up root password
+exit
+
+```
+
+## Set Up PHP
+
+```
+sudo apt install php libapache2-mod-php php-mysql
+
+```
+
+## Set Up phpMyAdmin
+
+When you install phpMyAdmin, use the same password you chose earlier. Also, select Apache in the configuration screen.
+
+```
+# Set up phpMyAdmin
+sudo apt install phpmyadmin -y
+sudo apt install -y php-json php-mbstring php-zip php-gd php-curl
+sudo ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+sudo a2enconf phpmyadmin.conf
+sudo phpenmod mbstring
+sudo systemctl reload apache2
+
+```
+
+If you need help following these steps, I recommend checking out these resources:
+
+- [LAMP tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-es)
+- [youtube tutorial](https://www.youtube.com/watch?v=nWdNtxhLNIk) for phpmyadmin
