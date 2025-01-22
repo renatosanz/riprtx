@@ -1,0 +1,94 @@
+---
+layout: ../../layouts/BlogLayout.astro
+title: "Compiling Aseprite on Ubuntu 24.04 LTS"
+author: ["Renato Sanchez"]
+tags: ["Ubuntu 24 LTS","Aseprite"]
+description: "Guide to compiling Aseprite on Ubuntu 24.04 LTS: install dependencies, compile with Skia, move binaries, and create a `.desktop` file for system-wide accessibility."
+date: 2025-01-21
+---
+
+Recently, I compiled the program [Aseprite](https://github.com/aseprite/aseprite), which is incredibly useful for creating pixel art. However, the process can be somewhat tedious if you're not familiar with it. Here, I’ll share my solution.
+
+## 1. Install Dependencies
+First, we need to install the necessary dependencies, including `cmake` and `ninja`.
+
+```bash
+sudo apt-get install -y g++ clang libc++-dev libc++abi-dev cmake ninja-build libx11-dev libxcursor-dev libxi-dev libgl1-mesa-dev libfontconfig1-dev
+```
+
+## 2. Compiling the Program
+
+Start by downloading the Aseprite and Skia resources. For this guide, I’ll use Aseprite version 1.3.7. I’ve encountered some issues compiling newer versions, but I’m working on resolving them.
+
+- [Aseprite](https://github.com/aseprite/aseprite/releases/tag/v1.3.7)
+- [Skia](https://github.com/aseprite/skia/releases/tag/m102-861e4743af)
+
+After downloading, extract the archives and rename the folders to `aseprite` and `skia` respectively. Then move these folders to your system's `$HOME` directory.
+
+Open a terminal inside the `aseprite` folder and run the following commands:
+
+```bash
+mkdir build
+cd build
+cmake \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DLAF_BACKEND=skia \
+  -DSKIA_DIR=$HOME/deps/skia \
+  -DSKIA_LIBRARY_DIR=$HOME/deps/skia/out/Release-x64 \
+  -DSKIA_LIBRARY=$HOME/deps/skia/out/Release-x64/libskia.a \
+  -G Ninja \
+  ..
+ninja aseprite
+```
+
+After about 10 minutes of compilation, you will find the following structure inside `$HOME/aseprite/build`:
+
+```bash
+/aseprite
+  /build
+    data (dir)
+    aseprite (bin)
+    gen (bin)
+```
+
+To verify the compilation, run the `./aseprite` binary. If everything went well, **Aseprite v1.3.7dev** should open. Otherwise, retry the steps and consult the [installation file](https://github.com/aseprite/aseprite/blob/main/INSTALL.md) in the repository for more details.
+
+## 3. Exposing the Binary Files to the System
+First, move the binary files (`aseprite` and `gen`) and the `data` directory to `/usr/local/bin`:
+
+```bash
+sudo mv $HOME/aseprite/build/* /usr/local/bin
+```
+
+Next, create a `.desktop` file so the system can recognize the program:
+
+```bash
+sudo nano /usr/share/applications/aseprite.desktop
+```
+
+Inside this file, write the following:
+
+```
+[Desktop Entry]
+Name=Aseprite
+Exec=/usr/local/bin/aseprite
+Icon=/usr/local/bin/aseprite-icon.png (preferred icon image path)
+Type=Application
+Terminal=false
+Categories=Utility;
+```
+
+> NOTE: In `nano`, use `Ctrl-O` to save and `Ctrl-X` to exit. 
+> For the icon, move the image to the correct location using the following command:
+```bash
+sudo cp $HOME/Downloads/aseprite-icon.png /usr/local/bin
+```
+
+Finally, execute the following commands in the terminal:
+
+```bash
+sudo update-desktop-database   
+gtk-launch aseprite                                                                                       
+```
+
+Aseprite should now launch successfully! 🎉
