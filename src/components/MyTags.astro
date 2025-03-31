@@ -1,5 +1,5 @@
 ---
-const allPosts = await import.meta.glob("../pages/blogs/*.mdx");
+const allPosts = import.meta.glob("../pages/blogs/*.mdx");
 
 let uniqueTags = [];
 
@@ -7,8 +7,7 @@ for (const post in allPosts) {
   let blogpost = await allPosts[post]();
   uniqueTags.push(blogpost.frontmatter.tags);
 }
-uniqueTags = [].concat(...uniqueTags);
-uniqueTags.flat();
+uniqueTags = [...new Set(uniqueTags.flat())]; // remove dups
 const currentYear = new Date().getFullYear();
 ---
 
