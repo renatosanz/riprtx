@@ -1,13 +1,14 @@
 ---
 import MyTags from "../components/MyTags.astro";
 import Navbar from "../components/Navbar.astro";
+import Tag from "../pages/tags/[tag].astro";
 
 function onlyDateForm(date: number) {
   var newDate = new Date(date);
   return newDate.toDateString();
 }
 const { frontmatter } = Astro.props;
-const { title, date, tags } = frontmatter;
+const { title, date, tags, author, description} = frontmatter;
 ---
 
 <!doctype html>
@@ -17,6 +18,26 @@ const { title, date, tags } = frontmatter;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="keywords" content={tags.join(", ")} />
+    <meta name="author" content={author} />
+    <meta name="theme-color" content="#ff5722" />
+    <meta name="og:title" content={title} />
+    <meta name="og:description" content={description} />
+    <meta name="og:image" content="https://riprtx.netlify.app/img_riprtx.png" />
+    <meta name="og:url" content={Astro.url} />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://riprtx.netlify.app/img_riprtx.png" />
+    <meta name="twitter:site" content="@riprtx" />
+    <meta name="twitter:creator" content="@riprtx" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content={author} />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content={tags.join(", ")} />
+
     <link rel="stylesheet" href="/normalize.css" />
     <link
       href="https://fonts.cdnfonts.com/css/cascadia-code"
@@ -30,7 +51,7 @@ const { title, date, tags } = frontmatter;
       crossorigin="anonymous"
     />
     <link rel="icon" href="/icon.svg" />
-    <title>rip.rtx</title>
+    <title>{title}</title>
   </head>
   <body>
     <div id="main-section">
