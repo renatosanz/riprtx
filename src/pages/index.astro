@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GameOfLifeCanvas from "../components/GameOfLifeCanvas";
 
 function orderByDate(d1, d2) {
   let n1 = new Date(d1.frontmatter.date).getTime();
@@ -29,14 +28,21 @@ function onlyDateForm(date: number) {
   return newDate.toDateString();
 }
 ---
+
 <Layout title="rip.rtx">
   <ul class="postslist">
     {
       orderedPosts.map((post) => (
-        <a href={post.url}>
+        <a
+          href={post.frontmatter.tags.includes("In progress") ? "/InProgress" : post.url}
+        >
           <li>
             <div class="postName">{post.frontmatter.title}</div>
-            <div>{onlyDateForm(post.frontmatter.date)}</div>
+            {post.frontmatter.tags.includes("In progress") ? (
+              <div>In Progress</div>
+            ) : (
+              <div>{onlyDateForm(post.frontmatter.date)}</div>
+            )}
           </li>
         </a>
       ))

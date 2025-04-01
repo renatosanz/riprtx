@@ -22,29 +22,32 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 
-function onlyDateForm(date:number){
-  var newDate = new Date(date)
-  return newDate.toDateString()
+function onlyDateForm(date: number) {
+  var newDate = new Date(date);
+  return newDate.toDateString();
 }
-
 ---
 
 <Layout title={tag}>
-  <ul  class="postslist">
+  <ul class="postslist">
     {
-      posts.map((post)=>
-            <a href={post.url}>
+      posts.map((post) => (
+        <a
+          href={post.frontmatter.tags.includes("In progress") ? "/" : post.url}
+        >
           <li>
             <div class="postName">{post.frontmatter.title}</div>
-            {post.frontmatter.tags.includes("In Progress") ? <div>In Progress</div> : <div>{onlyDateForm(post.frontmatter.date)}</div>}
+            {post.frontmatter.tags.includes("In progress") ? (
+              <div>In Progress</div>
+            ) : (
+              <div>{onlyDateForm(post.frontmatter.date)}</div>
+            )}
           </li>
-          </a>
-        )
+        </a>
+      ))
     }
   </ul>
 </Layout>
-
- 
 
 <style>
   .postslist {
@@ -60,9 +63,9 @@ function onlyDateForm(date:number){
     flex-direction: row;
     text-wrap: balance;
     transition: 0.1s;
-    padding: 5px 5px 5px 0 ;
+    padding: 5px 5px 5px 0;
   }
-  a{
+  a {
     color: var(--font-color);
   }
   li:hover {
