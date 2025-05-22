@@ -1,5 +1,5 @@
 # rip.rtx 
-**by Renato Sanchez** - *June 2024*
+**by Renato Sanchez** - *May 2025*
 
 Welcome to my blog! I am Renato, a music enthusiast, programming lover, and pixel art fan. I’m currently in my 8th semester of a computer science degree at BUAP University. I have to say, I’ve never been more interested in art and computing than since I discovered processing and computer vision.
 
