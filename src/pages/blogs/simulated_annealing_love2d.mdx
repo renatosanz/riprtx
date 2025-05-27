@@ -11,12 +11,12 @@ In the last few days I have been trying to understand the Simulated Annealing al
 
 ## How works Simulated Annealing?
 
-Well, to explain it I need to refer to the article [[1]](#1). of 2018 where the authors expose and compare the operation of the same with respect to other similar algorithms, but in summary this method is based on a process defined as *hardening*, which consists of taking a solid or metal to very high temperatures until reaching the point of “melting”, and then cool it at a particular rate to reach a state of minimum energy.
+Well, to explain it I need to refer to the article [[1]](#1) of 2018 where the authors expose and compare the operation of the same with respect to other similar algorithms, but in summary this method is based on a process defined as *hardening*, which consists of taking a solid or metal to very high temperatures until reaching the point of “melting”, and then cool it at a particular rate to reach a state of minimum energy.
 
-![hardening process](./imgs/hardening_process.png)
+![hardening process](./imgs/_hardening_process.png)
 
 
-Y si lo traemos al ambiente computacional, el algoritmo que hace dicha simulacion se veria como lo siguiente: 
+And if we bring it to the computational environment, the algorithm that makes such a simulation would look like the following: 
 
 1. Initialization: $ i := istart, k := 0, c_k = c_0, L_k := L_0 $
 
@@ -28,9 +28,9 @@ Y si lo traemos al ambiente computacional, el algoritmo que hace dicha simulacio
 
     If $ f(j) < f(i) $ then:
 
-    $ i := j $ (j becomes the current solution).
+    $ i := j $ ($j$ becomes the current solution).
 
-    Otherwise, $ j $ becomes the current solution with probability $ e^{\frac{f(i) - f(j)}{c_k}} $
+    Otherwise, $ j $ becomes the current solution with probability  `e^(f(i) - f(j))/(c_k)`
 
 3. $ k := k + 1 $
 
@@ -43,6 +43,44 @@ In the sequel, let $c_k$ be the value of the temperature parameter, and $L_k$ be
 ## Simulation design
 
 Based on a similar project called [Simulated Annealing for Beautiful Graphs](https://a.tulv.in/simulated-annealing-for-beautiful-graphs.html) by Atul Vinayak, I took as a reference certain parts of his implementation and transported them to Lua/Love2d. In the first instance, this experiment aims to create graphs with defined characteristics such as distance between nodes, distance of edges, angles between edges and distribution of nodes over a given area.
+
+![vizualization simulated annealing](./imgs/_viz_graph_sim_ann.webp)
+
+### 1. Environment Setup
+
+Like I've comment in past blogs, one of my hobbies is build games in Love2D, one of my favorite frameworks to dev games because use Lua, an amazing programming language (and fast!). So I recycle past game project base and implemented the following idea: A 2d space where I'll drop a set of orbs (points) connected between them in a specific way (manually declared or randomly generated) to iterate $k$ times (like ephocs or generations) the simulated annealing algorithm over this set of individuals, process that will result in a pretty/self-organized graph (one or more graphs), btw all the project uses OOP.
+
+And to start with the experiment, I noticed that was somewhat repetitive and ineficient load one by one each of the orbs and relations manually in code, so I decided to create a simple syntax that would allow me write and modify much faster tests in `.txt` files and parse them with a function. Here an example of my syntax:
+
+```txt
+node 1 : x:128 , y:128
+node 2 : x:100 , y:198
+node 3 : x:128 , y:208
+node 4 : x:128 , y:128
+node 5 : x:128 , y:30
+node 6 : x:128 , y:18
+node 7 : x:100 , y:100
+
+---
+
+1 rel 2
+2 rel 3
+3 rel 4
+4 rel 5
+5 rel 6
+6 rel 1
+
+7 rel 1
+7 rel 2
+7 rel 3
+7 rel 4
+7 rel 5
+7 rel 6
+
+```
+As you may have already noticed, the file is contains two parts: the node section is the first and here is where you will define every node with a number and (x,y) coordenates, it's important to respect the order of the nodes because this order will be necesary to load the second part of the file, the relation section, here you'll define every relation between the nodes defined in the first part of the file. 
+
+> If self-referenced relationships are defined, they won't be created to save processing time and resources.
 
 ## References
 <a id="1">[1]</a> 
