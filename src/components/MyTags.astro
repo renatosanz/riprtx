@@ -1,5 +1,12 @@
 ---
-const allPosts = import.meta.glob("../pages/blogs/*.mdx");
+
+interface BlogPost{
+  frontmatter: {
+    tags: string [];
+  }
+}
+
+const allPosts = import.meta.glob<BlogPost>("../pages/blogs/*.mdx");
 
 let uniqueTags = [];
 
