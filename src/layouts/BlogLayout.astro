@@ -181,13 +181,20 @@ const { title, date, tags, author, description } = frontmatter;
       content: " :)";
       font-weight: 700;
     }
+    blockquote * ::before {
+      content: "";
+    }
+    blockquote * ::after {
+      content: "";
+    }
     blockquote {
       background-color: var(--background-secondary);
       border-radius: 1rem;
-      padding: 0.5rem;
+      padding: 0.5rem 1rem;
       display: flex;
       margin: 0;
     }
+    
     summary {
       margin: 0.5rem;
       text-wrap: balance;
